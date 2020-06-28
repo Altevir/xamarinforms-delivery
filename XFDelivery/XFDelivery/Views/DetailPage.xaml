@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFDelivery.Views.DetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:fonticons="clr-namespace:XFDelivery.Fonts"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:shadows="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid BackgroundColor="{StaticResource colorWhite}">
+                <shadows:Shadows
+                    CornerRadius="175"
+                    HorizontalOptions="End"
+                    Shades="{shadows:SingleShade BlurRadius=20,
+                                                 Offset='-8,8',
+                                                 Opacity=0.28,
+                                                 Color={StaticResource colorBlack20}}"
+                    TranslationX="{OnPlatform Android='110',
+                                              iOS='115'}"
+                    TranslationY="-90"
+                    VerticalOptions="Start">
+                    <Image
+                        Aspect="AspectFill"
+                        HeightRequest="{OnPlatform Android='350',
+                                                   iOS='380'}"
+                        HorizontalOptions="End"
+                        Source="{Binding Item.image}"
+                        VerticalOptions="Start"
+                        WidthRequest="{OnPlatform Android='350',
+                                                  iOS='380'}" />
+                </shadows:Shadows>
+                <Grid
+                    Margin="{OnPlatform Android='30,20,0,30',
+                                        iOS='30,0,0,30'}"
+                    ColumnDefinitions=".3*, .7*"
+                    RowDefinitions="auto, auto, auto, auto, 80, auto, *, *">
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Aspect="AspectFit"
+                        HeightRequest="22"
+                        HorizontalOptions="StartAndExpand"
+                        Source="arrow_left"
+                        WidthRequest="22">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PopDetailPageCommand}" NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="{OnPlatform Android='5,0,0,0',
+                                            iOS='30'}"
+                        FontFamily="FontPoppinsMedium"
+                        FontSize="17"
+                        Text="{Binding Item.description}"
+                        TextColor="{StaticResource colorWhite}"
+                        VerticalTextAlignment="Center" />
+                    <shadows:Shadows
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="{OnPlatform Android='0,90,0,0',
+                                            iOS='0,90,0,0'}"
+                        CornerRadius="24"
+                        HeightRequest="48"
+                        HorizontalOptions="Start"
+                        Shades="{shadows:SingleShade BlurRadius=15,
+                                                     Offset='10,10',
+                                                     Opacity=0.15,
+                                                     Color={StaticResource colorBlack20}}"
+                        WidthRequest="48">
+                        <Grid>
+                            <BoxView
+                                BackgroundColor="{StaticResource colorWhite}"
+                                CornerRadius="24"
+                                HeightRequest="48"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center"
+                                WidthRequest="48" />
+                            <BoxView
+                                Margin="2,0,0,0"
+                                BackgroundColor="{StaticResource colorWhiteF3}"
+                                CornerRadius="22"
+                                HeightRequest="44"
+                                HorizontalOptions="Start"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="44" />
+                            <Path
+                                Aspect="Uniform"
+                                Data="M14.7307 1.37008C13.9025 0.486588 12.766 0 11.5304 0C10.6068 0 9.76099 0.287175 9.01636 0.85348C8.64062 1.13933 8.30017 1.48906 8 1.89725C7.69995 1.48918 7.35938 1.13933 6.98352 0.85348C6.23901 0.287175 5.39319 0 4.4696 0C3.23401 0 2.09741 0.486588 1.26917 1.37008C0.450806 2.24325 0 3.43613 0 4.72914C0 6.05996 0.504272 7.27817 1.58691 8.56301C2.55542 9.71231 3.94739 10.879 5.55933 12.23C6.10974 12.6914 6.73364 13.2144 7.38147 13.7714C7.55261 13.9188 7.77222 14 8 14C8.22766 14 8.44739 13.9188 8.61829 13.7717C9.26611 13.2145 9.89038 12.6913 10.441 12.2297C12.0527 10.8789 13.4447 9.71231 14.4132 8.56289C15.4958 7.27817 16 6.05996 16 4.72902C16 3.43613 15.5492 2.24325 14.7307 1.37008Z"
+                                Fill="{StaticResource colorGray6F}"
+                                HeightRequest="18"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="18" />
+                        </Grid>
+                    </shadows:Shadows>
+                    <shadows:Shadows
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Margin="0,30,0,0"
+                        CornerRadius="20"
+                        HorizontalOptions="Start"
+                        Shades="{shadows:SingleShade BlurRadius=15,
+                                                     Offset='10,10',
+                                                     Opacity=0.15,
+                                                     Color={StaticResource colorBlack20}}">
+                        <pancake:PancakeView
+                            Padding="5"
+                            BackgroundColor="{StaticResource colorWhite}"
+                            CornerRadius="20"
+                            HasShadow="False"
+                            HeightRequest="30"
+                            HorizontalOptions="Start"
+                            WidthRequest="100">
+                            <Grid ColumnDefinitions="*, auto, auto">
+                                <Grid Grid.Column="0" HorizontalOptions="Center">
+                                    <Image
+                                        Margin="20,0,0,0"
+                                        Aspect="AspectFit"
+                                        HeightRequest="22"
+                                        HorizontalOptions="Start"
+                                        Source="person2"
+                                        WidthRequest="22" />
+                                    <Image
+                                        Margin="5,0,0,0"
+                                        Aspect="AspectFit"
+                                        HeightRequest="22"
+                                        HorizontalOptions="Start"
+                                        Source="person1"
+                                        WidthRequest="22" />
+                                </Grid>
+                                <Label
+                                    Grid.Column="1"
+                                    Margin="0,2,0,0"
+                                    FontFamily="FontPoppinsSemiBold"
+                                    FontSize="14"
+                                    Text="{Binding Item.rating, StringFormat='{0:N1}'}"
+                                    VerticalOptions="Center" />
+                                <Image
+                                    Grid.Column="2"
+                                    Margin="0,0,5,0"
+                                    HeightRequest="14"
+                                    Source="star"
+                                    VerticalOptions="Center"
+                                    WidthRequest="14" />
+                            </Grid>
+                        </pancake:PancakeView>
+                    </shadows:Shadows>
+                    <Label
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Margin="0,50,0,15"
+                        FontFamily="FontPoppinsMedium"
+                        FontSize="20"
+                        Text="Description"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.ColumnSpan="2"
+                        Margin="0,0,20,0"
+                        FontSize="Small"
+                        Text="{Binding Item.complement}" />
+                    <Label
+                        Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                        Margin="0,20,0,10"
+                        FontFamily="FontPoppinsMedium"
+                        FontSize="20"
+                        Text="Quantity"
+                        VerticalOptions="Center" />
+                    <Grid
+                        Grid.Row="6"
+                        Grid.ColumnSpan="2"
+                        ColumnDefinitions="auto, 80"
+                        VerticalOptions="StartAndExpand">
+                        <pancake:PancakeView
+                            Padding="0"
+                            BorderColor="{StaticResource colorGray6F}"
+                            BorderThickness="1"
+                            CornerRadius="26"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
+                            WidthRequest="120">
+                            <Grid ColumnDefinitions="*, auto, *" ColumnSpacing="0">
+                                <Label
+                                    Grid.Column="0"
+                                    FontFamily="FontFontello"
+                                    FontSize="28"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{x:Static fonticons:FontIcons.Minus}"
+                                    TextColor="{StaticResource colorGray6F}"
+                                    VerticalOptions="FillAndExpand"
+                                    VerticalTextAlignment="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DeleteQuantCommand}" NumberOfTapsRequired="1" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <BoxView
+                                    Grid.Column="1"
+                                    BackgroundColor="{StaticResource colorGray6F}"
+                                    HorizontalOptions="Center"
+                                    Opacity="0.6"
+                                    VerticalOptions="Fill"
+                                    WidthRequest="2" />
+                                <Label
+                                    Grid.Column="2"
+                                    FontFamily="FontFontello"
+                                    FontSize="28"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{x:Static fonticons:FontIcons.Plus}"
+                                    TextColor="{StaticResource colorGray6F}"
+                                    VerticalOptions="FillAndExpand"
+                                    VerticalTextAlignment="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding AddQuantCommand}" NumberOfTapsRequired="1" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                        </pancake:PancakeView>
+                        <Label
+                            Grid.Column="1"
+                            Margin="20,0,0,0"
+                            FontFamily="FontPoppinsMedium"
+                            FontSize="25"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{Binding Quant}"
+                            VerticalOptions="Center" />
+                    </Grid>
+                    <StackLayout
+                        Grid.Row="7"
+                        Grid.ColumnSpan="2"
+                        Margin="{OnPlatform Android='0',
+                                            iOS='0,0,0,50'}"
+                        Spacing="0"
+                        VerticalOptions="End">
+                        <Label
+                            FontSize="Small"
+                            Opacity="0.6"
+                            Text="Price" />
+                        <Label
+                            FontFamily="FontPoppinsMedium"
+                            FontSize="25"
+                            Text="{Binding Item.price, StringFormat='${0:N0}'}" />
+                    </StackLayout>
+                    <shadows:Shadows
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        Margin="{OnPlatform Android='0,0,30,0',
+                                            iOS='0,0,30,40'}"
+                        CornerRadius="20"
+                        HorizontalOptions="End"
+                        Shades="{shadows:SingleShade BlurRadius=20,
+                                                     Offset='2,10',
+                                                     Opacity=0.4,
+                                                     Color={StaticResource colorBlack20}}"
+                        VerticalOptions="End">
+                        <pancake:PancakeView
+                            Padding="28,8"
+                            BackgroundColor="{StaticResource colorBlack20}"
+                            CornerRadius="36"
+                            HeightRequest="54">
+                            <Grid>
+                                <BoxView
+                                    BackgroundColor="{StaticResource colorWhite}"
+                                    CornerRadius="24"
+                                    HeightRequest="48"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="48" />
+                                <BoxView
+                                    BackgroundColor="{StaticResource colorOrange}"
+                                    CornerRadius="22"
+                                    HeightRequest="44"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="44" />
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="22"
+                                    HorizontalOptions="Center"
+                                    Source="cart"
+                                    VerticalOptions="Center"
+                                    WidthRequest="22" />
+                            </Grid>
+                        </pancake:PancakeView>
+                    </shadows:Shadows>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFDelivery.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:shadows="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+    <ContentPage.Content>
+        <ScrollView Margin="0,-40,0,0">
+            <Grid BackgroundColor="{StaticResource colorWhite}">
+                <Path
+                    Margin="{OnPlatform Android='0,30,0,0',
+                                        iOS='20,30,0,0'}"
+                    Data="M119 240C331.4 126.8 198.167 16.8333 105 -24L-179.5 -71L-261 436.5C-222.833 418.167 -93.4 353.2 119 240Z"
+                    Fill="{StaticResource colorGrayF4}" />
+                <Grid ColumnDefinitions="*, auto, auto" RowDefinitions="auto, auto, 200, 330, auto, 330">
+                    <Grid
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="20,70,0,0"
+                        ColumnDefinitions="25, *">
+                        <StackLayout Spacing="5">
+                            <BoxView BackgroundColor="{StaticResource colorGray6F}" HeightRequest="3" />
+                            <BoxView
+                                Margin="0,0,10,0"
+                                BackgroundColor="{StaticResource colorOrange}"
+                                HeightRequest="3" />
+                            <BoxView BackgroundColor="{StaticResource colorGray6F}" HeightRequest="3" />
+                        </StackLayout>
+                    </Grid>
+                    <Path
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,70,-5,0"
+                        Data="M12.5707 34.1301C9.78331 32.3883 7.46813 29.9864 5.83001 27.1368C4.19188 24.2873 3.28131 21.0779 3.17884 17.7926C3.07637 14.5073 3.78517 11.2475 5.24253 8.30134C6.69989 5.35523 8.86089 2.8137 11.5343 0.901602L12.6032 2.396C10.1753 4.13244 8.21282 6.4405 6.88934 9.11597C5.56586 11.7914 4.92217 14.7519 5.01522 17.7353C5.10828 20.7188 5.9352 23.6334 7.42284 26.2211C8.91049 28.8089 11.013 30.9902 13.5443 32.572L12.5707 34.1301Z"
+                        Fill="#E1F2FF" />
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="0,0,30,8"
+                        HeightRequest="18"
+                        Source="search"
+                        VerticalOptions="End"
+                        WidthRequest="18" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.ColumnSpan="3"
+                        Margin="20,30,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="{OnPlatform Android='23', iOS='25'}" Text="Food&#10;" />
+                                <Span
+                                    FontFamily="FontPoppinsMedium"
+                                    FontSize="{OnPlatform Android='23',
+                                                          iOS='25'}"
+                                    Text="Special For You" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <CollectionView
+                        x:Name="listGroups"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="3"
+                        Margin="20,10,0,0"
+                        HorizontalScrollBarVisibility="Never"
+                        ItemsSource="{Binding Groups}"
+                        SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="0" Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <shadows:Shadows CornerRadius="40" Shades="{shadows:SingleShade BlurRadius=22, Offset='5,2', Opacity=0.2, Color={StaticResource colorGray6F}}">
+                                    <pancake:PancakeView
+                                        Margin="0,15,15,15"
+                                        Padding="0,0,0,25"
+                                        BackgroundColor="{Binding backgroundColor}"
+                                        CornerRadius="40"
+                                        HasShadow="False"
+                                        WidthRequest="85">
+                                        <Grid RowDefinitions="auto, *">
+                                            <pancake:PancakeView
+                                                Grid.Row="0"
+                                                Margin="12,12,12,0"
+                                                Padding="0"
+                                                BackgroundColor="{StaticResource colorWhite}"
+                                                BorderColor="{StaticResource colorGrayE0}"
+                                                BorderThickness="1"
+                                                CornerRadius="30"
+                                                HeightRequest="60"
+                                                HorizontalOptions="Center"
+                                                IsClippedToBounds="True"
+                                                WidthRequest="60">
+                                                <Image
+                                                    Aspect="AspectFit"
+                                                    HeightRequest="30"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    Source="{Binding image}"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="30" />
+                                            </pancake:PancakeView>
+                                            <Label
+                                                Grid.Row="1"
+                                                FontSize="16"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding description}"
+                                                VerticalOptions="EndAndExpand" />
+                                        </Grid>
+                                        <pancake:PancakeView.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Path=BindingContext.SelectGroupCommand, Source={x:Reference listGroups}}"
+                                                CommandParameter="{Binding .}"
+                                                NumberOfTapsRequired="1" />
+                                        </pancake:PancakeView.GestureRecognizers>
+                                    </pancake:PancakeView>
+                                </shadows:Shadows>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <CollectionView
+                        x:Name="listItems"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="3"
+                        Margin="20,30,0,0"
+                        HorizontalScrollBarVisibility="Never"
+                        ItemsSource="{Binding Items}"
+                        SelectionMode="Single">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="20" Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <pancake:PancakeView
+                                    Margin="0,8"
+                                    Padding="15"
+                                    BackgroundColor="{StaticResource colorWhiteF3}"
+                                    CornerRadius="18"
+                                    HasShadow="False"
+                                    WidthRequest="165">
+                                    <Grid
+                                        ColumnDefinitions="auto, *, auto"
+                                        RowDefinitions="auto, auto, auto, auto, auto"
+                                        RowSpacing="0">
+                                        <Image
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            HeightRequest="16"
+                                            HorizontalOptions="Start"
+                                            Source="calories"
+                                            WidthRequest="16" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            FontSize="Small"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding calories, StringFormat='{0} Calories'}"
+                                            VerticalOptions="Center" />
+                                        <Path
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            Margin="0,0,2,0"
+                                            Aspect="Uniform"
+                                            Data="M14.7307 1.37008C13.9025 0.486588 12.766 0 11.5304 0C10.6068 0 9.76099 0.287175 9.01636 0.85348C8.64062 1.13933 8.30017 1.48906 8 1.89725C7.69995 1.48918 7.35938 1.13933 6.98352 0.85348C6.23901 0.287175 5.39319 0 4.4696 0C3.23401 0 2.09741 0.486588 1.26917 1.37008C0.450806 2.24325 0 3.43613 0 4.72914C0 6.05996 0.504272 7.27817 1.58691 8.56301C2.55542 9.71231 3.94739 10.879 5.55933 12.23C6.10974 12.6914 6.73364 13.2144 7.38147 13.7714C7.55261 13.9188 7.77222 14 8 14C8.22766 14 8.44739 13.9188 8.61829 13.7717C9.26611 13.2145 9.89038 12.6913 10.441 12.2297C12.0527 10.8789 13.4447 9.71231 14.4132 8.56289C15.4958 7.27817 16 6.05996 16 4.72902C16 3.43613 15.5492 2.24325 14.7307 1.37008Z"
+                                            Fill="{StaticResource colorGray6F}"
+                                            HeightRequest="18"
+                                            IsVisible="{Binding favorite}"
+                                            WidthRequest="18" />
+                                        <Image
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="3"
+                                            Margin="0,10,0,20"
+                                            HeightRequest="136"
+                                            HorizontalOptions="Center"
+                                            Source="{Binding image}"
+                                            WidthRequest="136" />
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.ColumnSpan="3"
+                                            Margin="0,-10,0,0"
+                                            FontFamily="FontPoppinsMedium"
+                                            FontSize="18"
+                                            Text="{Binding description}" />
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.ColumnSpan="3"
+                                            FontSize="14"
+                                            LineBreakMode="TailTruncation"
+                                            Text="{Binding complement}" />
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.ColumnSpan="3"
+                                            Margin="0,10,0,0"
+                                            FontFamily="FontPoppinsMedium"
+                                            FontSize="22"
+                                            Text="{Binding price, StringFormat='${0}'}"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                    <pancake:PancakeView.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Path=BindingContext.NavigateToDetailPageCommand, Source={x:Reference listItems}}"
+                                            CommandParameter="{Binding .}"
+                                            NumberOfTapsRequired="1" />
+                                    </pancake:PancakeView.GestureRecognizers>
+                                </pancake:PancakeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Label
+                        Grid.Row="4"
+                        Grid.ColumnSpan="3"
+                        Margin="20,22,0,22"
+                        FontFamily="FontPoppinsMedium"
+                        FontSize="23"
+                        Text="Popular" />
+                    <CollectionView
+                        Grid.Row="5"
+                        Grid.ColumnSpan="3"
+                        Margin="20,0,0,20"
+                        HorizontalScrollBarVisibility="Never"
+                        ItemsSource="{Binding Items}"
+                        SelectionMode="Single">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="20" Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <pancake:PancakeView
+                                    Margin="0,8"
+                                    Padding="15"
+                                    BackgroundColor="{StaticResource colorWhiteF3}"
+                                    CornerRadius="18"
+                                    HasShadow="False"
+                                    WidthRequest="165">
+                                    <Grid
+                                        ColumnDefinitions="auto, *, auto"
+                                        RowDefinitions="auto, auto, auto, auto, auto"
+                                        RowSpacing="0">
+                                        <Image
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            HeightRequest="16"
+                                            HorizontalOptions="Start"
+                                            Source="calories"
+                                            WidthRequest="16" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            FontSize="Small"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding calories, StringFormat='{0} Calories'}"
+                                            VerticalOptions="Center" />
+                                        <Path
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            Margin="0,0,2,0"
+                                            Aspect="Uniform"
+                                            Data="M14.7307 1.37008C13.9025 0.486588 12.766 0 11.5304 0C10.6068 0 9.76099 0.287175 9.01636 0.85348C8.64062 1.13933 8.30017 1.48906 8 1.89725C7.69995 1.48918 7.35938 1.13933 6.98352 0.85348C6.23901 0.287175 5.39319 0 4.4696 0C3.23401 0 2.09741 0.486588 1.26917 1.37008C0.450806 2.24325 0 3.43613 0 4.72914C0 6.05996 0.504272 7.27817 1.58691 8.56301C2.55542 9.71231 3.94739 10.879 5.55933 12.23C6.10974 12.6914 6.73364 13.2144 7.38147 13.7714C7.55261 13.9188 7.77222 14 8 14C8.22766 14 8.44739 13.9188 8.61829 13.7717C9.26611 13.2145 9.89038 12.6913 10.441 12.2297C12.0527 10.8789 13.4447 9.71231 14.4132 8.56289C15.4958 7.27817 16 6.05996 16 4.72902C16 3.43613 15.5492 2.24325 14.7307 1.37008Z"
+                                            Fill="{StaticResource colorGray6F}"
+                                            HeightRequest="18"
+                                            IsVisible="{Binding favorite}"
+                                            WidthRequest="18" />
+                                        <Image
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="3"
+                                            Margin="0,10,0,20"
+                                            HeightRequest="136"
+                                            HorizontalOptions="Center"
+                                            Source="{Binding image}"
+                                            WidthRequest="136" />
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.ColumnSpan="3"
+                                            FontFamily="FontPoppinsMedium"
+                                            FontSize="18"
+                                            Text="{Binding description}" />
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.ColumnSpan="3"
+                                            FontSize="14"
+                                            LineBreakMode="TailTruncation"
+                                            Text="{Binding complement}" />
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.ColumnSpan="3"
+                                            Margin="0,10,0,0"
+                                            FontFamily="FontPoppinsMedium"
+                                            FontSize="22"
+                                            Text="{Binding price, StringFormat='${0}'}"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </pancake:PancakeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

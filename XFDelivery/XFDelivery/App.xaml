@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="XFDelivery.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Application.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="FontPoppinsRegular" />
+            <Setter Property="TextColor" Value="#272727" />
+        </Style>
+        <Color x:Key="colorOrange">#FF8920</Color>
+        <Color x:Key="colorGrayF4">#F4F4F4</Color>
+        <Color x:Key="colorGray6F">#6F6F6F</Color>
+        <Color x:Key="colorGrayE0">#E0E0E0</Color>
+        <Color x:Key="colorWhite">#FFFFFF</Color>
+        <Color x:Key="colorWhiteF3">#F3F8FC</Color>
+        <Color x:Key="colorBlack20">#202020</Color>
+    </Application.Resources>
+</Application>
