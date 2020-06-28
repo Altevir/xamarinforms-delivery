@@ -19,7 +19,8 @@
                     HorizontalOptions="End"
                     Shades="{shadows:SingleShade BlurRadius=20,
                                                  Offset='-8,8',
-                                                 Opacity=0.28,
+                                                 Opacity={OnPlatform Android='0.28',
+                                                                     iOS='0.4'},
                                                  Color={StaticResource colorBlack20}}"
                     TranslationX="{OnPlatform Android='110',
                                               iOS='115'}"
