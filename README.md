@@ -6,7 +6,7 @@ O que foi usado no desenvolvimento:
 - Embedded Fonts (https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/text/fonts)
 - Sharpnado.Shadows (https://github.com/roubachof/Sharpnado.Shadows)
 - CollectionView
-- Path (Nova feature do Xamarin.Forms)
+- Shapes (Path) - Nova feature do Xamarin.Forms
 - XamarinForms 4.7.0.968
 
 ## Screenshots
