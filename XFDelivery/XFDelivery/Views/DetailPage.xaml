@@ -39,7 +39,7 @@
                     Margin="{OnPlatform Android='30,20,0,30',
                                         iOS='30,0,0,30'}"
                     ColumnDefinitions=".3*, .7*"
-                    RowDefinitions="auto, auto, auto, auto, 80, auto, *, *">
+                    RowDefinitions="auto, auto, auto, auto, 80, auto, 140, *">
                     <Image
                         Grid.Row="0"
                         Grid.Column="0"
@@ -241,7 +241,7 @@
                         Margin="{OnPlatform Android='0',
                                             iOS='0,0,0,50'}"
                         Spacing="0"
-                        VerticalOptions="End">
+                        VerticalOptions="EndAndExpand">
                         <Label
                             FontSize="Small"
                             Opacity="0.6"
@@ -262,7 +262,7 @@
                                                      Offset='2,10',
                                                      Opacity=0.4,
                                                      Color={StaticResource colorBlack20}}"
-                        VerticalOptions="End">
+                        VerticalOptions="EndAndExpand">
                         <pancake:PancakeView
                             Padding="28,8"
                             BackgroundColor="{StaticResource colorBlack20}"
