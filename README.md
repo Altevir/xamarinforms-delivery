@@ -16,7 +16,7 @@ O que foi usado no desenvolvimento:
 
 ### iOS
 ![delivery_ios](https://user-images.githubusercontent.com/11803107/85937342-ea34d880-b8d8-11ea-95f4-6566c89419b7.jpg)
-![delivery_ios2](https://user-images.githubusercontent.com/11803107/85937347-f325aa00-b8d8-11ea-988a-a9c0b6e450af.jpg)
+![delivery_ios](https://user-images.githubusercontent.com/11803107/85948215-f5fabc00-b925-11ea-928c-0bf4fb71cde4.jpg)
 
 ### GIF
 ![ezgif com-resize](https://user-images.githubusercontent.com/11803107/85937386-50216000-b8d9-11ea-8fd7-dee26037f6a0.gif)
